@@ -84,7 +84,7 @@ function realizarConsulta() {
     var requestData = {
       actions: "citas_sin _agendar",
     };
-  console.log(requestData);
+  
     $.ajax({
       url: "app/controller/citas_controlador.php",
       method: "POST",
@@ -92,7 +92,6 @@ function realizarConsulta() {
       dataType: "json",
     
     success: function (response) {
-        console.log(response);
         response !== null && response.length > 0
           ? mostrarResultados(response)
           : alertWarning();
@@ -105,7 +104,7 @@ function realizarConsulta() {
   
   function alertWarning() {
     $.smkAlert({
-      text: "No existen Citas disponibles en la fecha seleccionada",
+      text: "No existen Citas disponibles a la fecha",
       type: "warning",
     });
   }

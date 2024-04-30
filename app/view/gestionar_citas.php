@@ -151,7 +151,7 @@
 
 
     </script>
-    <script src="public/js/ccitas.js"></script>
+    <script src="public/js/gestionar_citas.js"></script>
 </body>
 
 </html>

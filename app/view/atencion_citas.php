@@ -46,17 +46,17 @@
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-                <button class="nav-link active" id="nav-schedulling-tab" data-bs-toggle="tab"
+                <button class="nav-link" id="nav-schedulling-tab" data-bs-toggle="tab"
                     data-bs-target="#create_appointments" type="button" role="tab"
                     aria-controls="nav-create_appointments" aria-selected="true">Crear Citas</button>
-                <button class="nav-link " id="nav-calendar-tab" data-bs-toggle="tab"
-                    data-bs-target="#appointment-calendar" type="button" role="tab" aria-controls="nav-calendar"
-                    aria-selected="true" onclick="realizarConsulta()"> Citas Sin Agendar </button>
+                <button class="nav-link active" id="nav-calendar-tab" data-bs-toggle="tab"
+                    data-bs-target="#appointment-calendar" type="button" role="tab" 
+                    aria-controls="nav-calendar" aria-selected="true" onclick="realizarConsultaxEspecialista()"> Atender Citas </button>
             </div>
         </nav>
         <div id="contenido">
             <div class="tab-content" id="nav-tabContent">
-                <section class="tab-pane fade show active" id="create_appointments" role="tabpanel"
+                <section class="tab-pane fade " id="create_appointments" role="tabpanel"
                     aria-labelledby="nav-create_appointments-tab" tabindex="0">
                     <article>
                         <form class="row needs-validation-form" novalidate>
@@ -142,7 +142,7 @@
                     </article>
                 </section>
 
-                <section class="tab-pane fade " id="appointment-calendar" role="tabpanel"
+                <section class="tab-pane fade show active" id="appointment-calendar" role="tabpanel"
                     aria-labelledby="nav-calendar-tab" tabindex="0">
                     <article>
                         <div class="row mt-4">
@@ -151,12 +151,13 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Nombre del Especialista</th>
+                                            <th>Nombre del Pacientea</th>
                                             <th>Fecha de Cita</th>
                                             <th>Hora de Cita</th>
+                                            <th>Acción</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="tablaResultadosBusqueda">
+                                    <tbody id="tablaResultadosBusquedaxEspecialista">
                                         
                                     </tbody>
                                 </table>
@@ -167,7 +168,27 @@
             </div>
         </div>
     </div>
-    <script src="public/js/administracion_citas.js"></script>
+
+    <div class="modal fade" id="modalAtenderCita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Atencion Cita Medica</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-content">
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarCambiosCitaAtendida()">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="public/js/atencion_citas.js"></script>
 </body>
 
 </html>

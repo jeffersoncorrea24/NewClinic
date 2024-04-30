@@ -56,6 +56,10 @@ if (!isset($_SESSION['status_connect'])) {
                     <?php if ($_SESSION['id_roles'] == 1 || $_SESSION['id_roles'] == 5) {
                         echo '<a href="#" id="gestionar_citas"><img src="public/img/soporte.png" alt="" class="ml-3" onclick:>Citas</a>';
                     } ?>
+
+                    <?php if ($_SESSION['id_roles'] == 1 || $_SESSION['id_roles'] == 5) {
+                        echo '<a href="#" id="atencion_citas"><img src="public/img/soporte.png" alt="" class="ml-3" onclick:>Atención de Citas</a>';
+                    } ?>
                 </nav>
             </div>
 

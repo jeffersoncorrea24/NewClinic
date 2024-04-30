@@ -8,9 +8,9 @@ class Citas
     private $especialidad_cita;
     private $estado_cita;
     private $afiliado;
-
     private $sede_cita;
-
+    private $observaciones_cita;
+    private $conclusiones_cita;
 
     public function getCodigoCita()
     {
@@ -104,6 +104,30 @@ class Citas
     public function setSedeCita($sede_cita): self
     {
         $this->sede_cita = $sede_cita;
+
+        return $this;
+    }
+
+    public function getObservacionesCita()
+    {
+        return $this->observaciones_cita;
+    }
+
+    public function setObservacionesCita($observaciones_cita): self
+    {
+        $this->observaciones_cita = $observaciones_cita;
+
+        return $this;
+    }
+
+    public function getConclusionesCita()
+    {
+        return $this->conclusiones_cita;
+    }
+
+    public function setConclusionesCita($conclusiones_cita): self
+    {
+        $this->conclusiones_cita = $conclusiones_cita;
 
         return $this;
     }

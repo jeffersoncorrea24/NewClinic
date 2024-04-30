@@ -17,6 +17,21 @@ class Citas_crud
         echo $numFilasActualizadas > 0 ? 1 : 0;
     }
 
+    public function finalizarCita($cita)
+    {
+
+        $db = Conectar::acceso();
+        $update = $db->prepare('UPDATE citas SET observaciones_cita=:observaciones, conclusiones_cita=:conclusiones, estado_cita=:estado_cita WHERE codigo_cita=:id');
+        $update->bindValue('estado_cita',3);
+        $update->bindValue('id', $cita->getCodigoCita());
+        $update->bindValue('observaciones', $cita->getObservacionesCita());
+        $update->bindValue('conclusiones', $cita->getConclusionesCita());
+        $update->execute();
+        
+        $numFilasActualizadas = $update->rowCount();
+        echo $numFilasActualizadas > 0 ? 1 : 0;
+    }
+
     public function crearCita($cita)
     {
         $db = Conectar::acceso();
@@ -48,6 +63,19 @@ class Citas_crud
 
         return json_encode($results);
 
+    }
+
+    public function consultaCitasAgendadasxEspecialista($especialista)
+    {
+        $db = Conectar::acceso();
+        $consultAll = $db->prepare('SELECT * FROM citas WHERE estado_cita=:estado AND especialista_cita=:especialista ORDER BY fecha_cita ASC, hora_cita ASC ');
+        $consultAll->bindValue('estado', 2);
+        $consultAll->bindValue('especialista', $especialista->getEspecialistaCita());
+        $consultAll->execute();
+
+        $results = $consultAll->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($results);
     }
 
     public function consultarCitasSinAgendarGeneral()
