@@ -17,6 +17,23 @@ class Citas_crud
         echo $numFilasActualizadas > 0 ? 1 : 0;
     }
 
+    public function crearCita($cita)
+    {
+        $db = Conectar::acceso();
+        $create = $db->prepare('INSERT INTO citas(especialista_cita, fecha_cita, hora_cita, especialidad_cita, estado_cita, sede_cita)
+        VALUES(:doctor, :fecha, :hora, :especialidad, :estado, :sede)');
+        $create->bindValue('doctor',$cita->getEspecialistaCita());
+        $create->bindValue('fecha', $cita->getFechaCita());
+        $create->bindValue('hora', $cita->getHoraCita());
+        $create->bindValue('especialidad', $cita->getEspecialidadCita());
+        $create->bindValue('estado', 1);
+        $create->bindValue('sede', $cita->getSedeCita());
+        $create->execute();
+        
+        $numFilasActualizadas = $create->rowCount();
+        echo $numFilasActualizadas > 0 ? 1 : 0;
+    }
+
     public function consultarCitasSinAgendar($data)
     {
 
@@ -25,6 +42,20 @@ class Citas_crud
         $consultAll->bindValue('estado', 1);
         $consultAll->bindValue('fecha', $data->getFechaCita());
         $consultAll->bindValue('especialidad', $data->getEspecialidadCita());
+        $consultAll->execute();
+
+        $results = $consultAll->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($results);
+
+    }
+
+    public function consultarCitasSinAgendarGeneral()
+    {
+
+        $db = Conectar::acceso();
+        $consultAll = $db->prepare('SELECT * FROM citas WHERE estado_cita=:estado');
+        $consultAll->bindValue('estado', 1);
         $consultAll->execute();
 
         $results = $consultAll->fetchAll(PDO::FETCH_ASSOC);

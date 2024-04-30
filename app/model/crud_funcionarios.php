@@ -36,7 +36,10 @@ class CrudFuncionarios
 			echo 3;
 		} else {
 			$db = Conectar::acceso();
-			$crea_funcionario = $db->prepare('INSERT INTO funcionarios(identificacion,nombre,mail,mail2,departamento_interno,area,cargo,extension,rol,usuario,contrasena,validacion, festado,fecha_registro,centro_de_costos, fecha_sistema)VALUES(:f_identificacion, :f_nombre, :f_email, :f_email2, :f_departamentoInterno, :f_area, :f_cargo, :f_extension, :f_rol, :f_usuario, :f_contrasena, :f_validacion, :f_estado, curdate(), :f_centroCostos, :fecha_sistema)');
+			$crea_funcionario = $db->prepare('INSERT INTO funcionarios(identificacion,nombre,mail,mail2,departamento_interno,area,cargo,extension,rol,usuario,
+			contrasena,validacion, festado,fecha_registro,centro_de_costos, fecha_sistema)
+			VALUES(:f_identificacion, :f_nombre, :f_email, :f_email2, :f_departamentoInterno, :f_area, :f_cargo, :f_extension, :f_rol, :f_usuario, 
+			:f_contrasena, :f_validacion, :f_estado, curdate(), :f_centroCostos, :fecha_sistema)');
 
 			$password = password_hash($create->getF_contrasena(), PASSWORD_DEFAULT, ["cost" => 15]);
 

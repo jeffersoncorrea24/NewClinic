@@ -50,6 +50,10 @@ if (!isset($_SESSION['status_connect'])) {
             <div class="col-2 mt-3 navega">
                 <nav>
                     <?php if ($_SESSION['id_roles'] == 1 || $_SESSION['id_roles'] == 5) {
+                        echo '<a href="#" id="administracion_citas"><img src="public/img/soporte.png" alt="" class="ml-3" onclick:>Administración</a>';
+                    } ?>
+
+                    <?php if ($_SESSION['id_roles'] == 1 || $_SESSION['id_roles'] == 5) {
                         echo '<a href="#" id="gestionar_citas"><img src="public/img/soporte.png" alt="" class="ml-3" onclick:>Citas</a>';
                     } ?>
                 </nav>

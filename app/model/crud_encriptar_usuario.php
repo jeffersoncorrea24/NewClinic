@@ -26,11 +26,6 @@ require_once('../model/vinculo.php');
     } else {
     	header('location:../../app/view/view_encriptar_usuario.php');
     }
-
- 
  	}
-
 }
-
-
  ?>

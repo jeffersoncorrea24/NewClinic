@@ -9,6 +9,8 @@ class Citas
     private $estado_cita;
     private $afiliado;
 
+    private $sede_cita;
+
 
     public function getCodigoCita()
     {
@@ -90,6 +92,18 @@ class Citas
     public function setAfiliado($afiliado): self
     {
         $this->afiliado = $afiliado;
+
+        return $this;
+    }
+
+    public function getSedeCita()
+    {
+        return $this->sede_cita;
+    }
+
+    public function setSedeCita($sede_cita): self
+    {
+        $this->sede_cita = $sede_cita;
 
         return $this;
     }

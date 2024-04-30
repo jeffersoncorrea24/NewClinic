@@ -33,6 +33,20 @@ if (isset($_POST['actions'])) {
             echo $jsonResponse;
             break;
 
+        case 'crear_cita':
+            $entidad -> setFechaCita($_POST['fecha']);
+            $entidad -> setEspecialidadCita($_POST['especialidad']);
+            $entidad -> setEspecialistaCita($_POST['doctor']);
+            $entidad -> setHoraCita($_POST['hora']);
+            $entidad -> setSedeCita($_POST['sede']);
+            $crud -> crearCita($entidad);
+            break;
+        
+        case 'citas_sin _agendar':
+            $jsonResponse = $crud -> consultarCitasSinAgendarGeneral();
+            header('Content-Type: application/json');
+            echo $jsonResponse;
+            break;
         default:
 
             break;
